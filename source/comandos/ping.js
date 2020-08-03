@@ -6,8 +6,8 @@ exports.run = async(bot, message, args) => {
     .setThumbnail(message.author.displayAvatarURL())
     .setAuthor("Latência")
     .setDescription(`seu ping é ${bot.ws.ping}ms`)
+    
     message.reply(ping)
-
 }
 exports.help = {
     name: 'ping'
