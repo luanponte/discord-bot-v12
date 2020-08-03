@@ -33,62 +33,6 @@ fs.readdir(`./source/comandos`, (err, files) => {
     })
 })
 
-fs.readdir(`./source/diversos`, (err, files) => {
-    if(err) console.log(err)
-    let arquivoJS = files.filter(f => f.split('.').pop() === 'js')
-    arquivoJS.forEach((f, i) => {
-        let props = require(`./source/diversos/${f}`)
-        console.log(`Comando ${f} carregado.`)
-        if (props.help && props.help.name) {
-            bot.commands.set(props.help.name, props)
-        } else {
-            console.log(`Comando ${f} não foi concluído, Reveja-o`)
-        }
-    })
-})
-
-fs.readdir(`./source/entretenimento`, (err, files) => {
-    if(err) console.log(err)
-    let arquivoJS = files.filter(f => f.split('.').pop() === 'js')
-    arquivoJS.forEach((f, i) => {
-        let props = require(`./source/entretenimento/${f}`)
-        console.log(`Comando ${f} carregado.`)
-        if (props.help && props.help.name) {
-            bot.commands.set(props.help.name, props)
-        } else {
-            console.log(`Comando ${f} não foi concluído, Reveja-o`)
-        }
-    })
-})
-
-fs.readdir(`./source/mensagens`, (err, files) => {
-    if(err) console.log(err)
-    let arquivoJS = files.filter(f => f.split('.').pop() === 'js')
-    arquivoJS.forEach((f, i) => {
-        let props = require(`./source/mensagens/${f}`)
-        console.log(`Comando ${f} carregado.`)
-        if (props.help && props.help.name) {
-            bot.commands.set(props.help.name, props)
-        } else {
-            console.log(`Comando ${f} não foi concluído, Reveja-o`)
-        }
-    })
-})
-
-fs.readdir(`./source/minecraft`, (err, files) => {
-    if(err) console.log(err)
-    let arquivoJS = files.filter(f => f.split('.').pop() === 'js')
-    arquivoJS.forEach((f, i) => {
-        let props = require(`./source/minecraft/${f}`)
-        console.log(`Comando ${f} carregado.`)
-        if (props.help && props.help.name) {
-            bot.commands.set(props.help.name, props)
-        } else {
-            console.log(`Comando ${f} não foi concluído, Reveja-o`)
-        }
-    })
-})
-
 bot.on('message', message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
@@ -111,8 +55,8 @@ bot.on('ready', () => {
     console.log(`O bot ${bot.user.tag} foi iniciado com sucesso, temos ${bot.users.cache.size} membros no servidor!`);
     bot.user.setStatus('online'); // Status: dnd, idle, online, invisible
     var tabela = [
-        {name: 'Em desenvolvimento', type: "PLAYING"},
-        {name: `⚡BlackLabel | BOTS - https://discord.gg/G4CKV93`, type: 'PLAYING'}
+        {name: 'Em desenvolvimento', type: "PLAYING"}, // TYPES: PLAYING, LISTENING, WATCHING, STREAMING 
+        {name: `https://github.com/luanponte`, type: 'PLAYING'} // TYPES: PLAYING, LISTENING, WATCHING, STREAMING 
     ]
     setInterval(function(){
         let altstatus = tabela[Math.floor(Math.random() * tabela.length)];
